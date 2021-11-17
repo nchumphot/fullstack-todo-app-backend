@@ -5,6 +5,7 @@ import {
   addDummyDbItems,
   addDbItem,
   getAllDbItems,
+  deleteDbItemById,
   getDbItemById,
   DbItem,
   updateDbItemById,
@@ -13,7 +14,7 @@ import filePath from "./filePath";
 
 // loading in some dummy items into the database
 // (comment out if desired, or change the number)
-addDummyDbItems(20);
+addDummyDbItems(5);
 
 const app = express();
 
@@ -61,7 +62,7 @@ app.get<{ id: string }>("/items/:id", (req, res) => {
 
 // DELETE /items/:id
 app.delete<{ id: string }>("/items/:id", (req, res) => {
-  const matchingSignature = getDbItemById(parseInt(req.params.id));
+  const matchingSignature = deleteDbItemById(parseInt(req.params.id));
   if (matchingSignature === "not found") {
     res.status(404).json(matchingSignature);
   } else {
