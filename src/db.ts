@@ -1,5 +1,8 @@
 export interface DbItem {
-  // sketch out interface here
+  description: string,
+  isComplete: boolean,
+  creationDate: string,
+  dueDate: string
 }
 
 export interface DbItemWithId extends DbItem {
